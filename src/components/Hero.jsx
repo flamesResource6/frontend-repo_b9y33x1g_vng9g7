@@ -18,6 +18,9 @@ const Hero = () => {
     my.set(y)
   }
 
+  // SVG noise data URI (properly quoted)
+  const noiseDataUri = "url(\"data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160' viewBox='0 0 160 160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='2' stitchTiles='stitch'/></filter><rect width='100%' height='100%' filter='url(%23n)' opacity='0.9'/></svg>\")"
+
   return (
     <section className="relative min-h-screen overflow-hidden bg-black" onMouseMove={onMouseMove}>
       {/* Spline 3D scene */}
@@ -31,8 +34,8 @@ const Hero = () => {
       </div>
 
       {/* Animated noise / vignette */}
-      <div className="pointer-events-none absolute inset-0 z-10 opacity-30" style={{ backgroundImage: "radial-gradient(transparent 60%, rgba(0,0,0,0.6))" }} />
-      <div className="pointer-events-none absolute inset-0 z-10 opacity-[0.06]" style={{ backgroundImage: 'url("data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' width=\'160\' height=\'160\' viewBox=\'0 0 160 160\'><filter id=\'n\'><feTurbulence type=\'fractalNoise\' baseFrequency=\'0.65\' numOctaves=\'2\' stitchTiles=\'stitch\'/></filter><rect width=\'100%\' height=\'100%\' filter=\'url(%23n)\' opacity=\'0.9\'/></svg>' )' }} />
+      <div className="pointer-events-none absolute inset-0 z-10 opacity-30" style={{ backgroundImage: 'radial-gradient(transparent 60%, rgba(0,0,0,0.6))' }} />
+      <div className="pointer-events-none absolute inset-0 z-10 opacity-[0.06]" style={{ backgroundImage: noiseDataUri }} />
 
       {/* Headline content */}
       <div className="relative z-20 flex min-h-screen items-center">
